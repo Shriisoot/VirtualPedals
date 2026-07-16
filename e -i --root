@@ -1,0 +1,65 @@
+[33mcommit 1dd47e68664245fcd9f3f0f70658744ed691c82c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: sankalp kulkarni <sankalpkulkarni48@gmail.com>
+Commit: sankalp kulkarni <sankalpkulkarni48@gmail.com>
+
+    docs: GitHub-ready README + license + build hardening
+    
+    - Rewrote README with badges, feature table, screenshot, and clearer
+      build/quickstart instructions for public release
+    - Added MIT LICENSE (JUCE itself remains separately licensed/excluded)
+    - Added .gitattributes for stable line endings across platforms
+    - Hardened .gitignore: never track build artifacts, exe/pdb, or any
+      generated user data (presets, recordings, session/midi state, plugin
+      scan cache) even if accidentally copied into the repo
+    - CMakeLists: JUCE_PATH default now relative (../JUCE) instead of a
+      personal absolute path, so a fresh clone "just works" for anyone who
+      checks out JUCE alongside this repo
+    
+    Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+[33mcommit 6655548996fcf510e23407eb5e7ad07ba18fe163[m
+Author: sankalp kulkarni <sankalpkulkarni48@gmail.com>
+Commit: sankalp kulkarni <sankalpkulkarni48@gmail.com>
+
+    v2: sustainiac + fancy UI + pickups + song tones + recording
+    
+    - SpectralFreeze rewritten Paulstretch-style (random-phase resynthesis,
+      4096 FFT, averaged capture) — kills the frame-rate 'trrrr' buzz
+    - Infinite Hold is now a true sustainiac: attack arms a 50ms settle,
+      freeze holds forever, touching/muting the strings releases
+    - Pickup Sim pedal: 11 types incl. Active Metal (EMG-style) humbucker
+      with preamp squish + heat, all Strat positions, P90, Tele, piezo
+    - 7 new pedals: Uni-Vibe, Wah, Slicer, Spring Reverb, Treble Booster,
+      Doubler, Swell (46 total)
+    - 24-bit WAV recording of the processed output (header-safe on quit),
+      power on/off button, REC timer in header
+    - Fancy UI: brushed-metal gradient faces w/ corner screws, jewel LEDs,
+      per-category procedural artwork, metallic knobs w/ tick rings,
+      tolex board texture + sagging patch cables
+    - Song Tones library: 18 Metallica rigs (Master of Puppets, Battery,
+      One, Enter Sandman, ...) built on the metal-humbucker chain
+    - VST3 fixes: pick a .vst3 file directly (scanAndAddFile), auto-rescan
+      after adding a folder, correct user VST3 path (LocalAppData)
+    - Run Virtual Pedals.bat + root exe copy
+    
+    Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+
+[33mcommit f2292db517d87054abeca03c9dfc5cae1d203b26[m
+Author: sankalp kulkarni <sankalpkulkarni48@gmail.com>
+Commit: sankalp kulkarni <sankalpkulkarni48@gmail.com>
+
+    Virtual Pedals v1.0 — JUCE 8 virtual pedalboard
+    
+    38 built-in pedals (drive/dynamics/EQ/delay/reverb/mod/pitch/filter/
+    experimental/sustain/amp/utility), 64-bit DSP with 4x oversampled
+    nonlinear stages, silent bypass, output limiter + clip guard, hum
+    eliminator + adaptive noise reduction, 9-mode Sustain Engine,
+    serial+parallel routing with drag-drop board, node-based custom pedal
+    builder, amp+cab sim with user IR loader, VST3 hosting with
+    crash-blacklist scanning, Tone DNA offline audio analysis -> rig
+    suggestion with confidence + A/B, MIDI learn + program change, JSON
+    presets with autosave/undo/redo, meters + spectrum + scope + CPU/latency.
+    
+    Built with portable MSVC toolchain on E: (no C: footprint).
+    
+    Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>

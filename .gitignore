@@ -1,0 +1,34 @@
+# build output
+build/
+out/
+cmake-build-*/
+
+# generated executables / packaging (ship via Releases, not the repo)
+*.exe
+*.pdb
+*.ilk
+*.obj
+*.lib
+
+# local screenshots taken while testing (README screenshot lives in docs/)
+verify*.png
+
+# user data that must never be committed (presets/recordings live outside
+# the repo under %AppData%/Documents, but guard against accidental copies)
+*.vpreset
+session.json
+midimap.json
+favourites.txt
+pluginfavs.txt
+knownplugins.xml
+scan-crashed.txt
+vstpaths.txt
+*.wav
+!docs/**/*.wav
+
+# editor / OS cruft
+.vs/
+.vscode/
+*.user
+.DS_Store
+Thumbs.db
